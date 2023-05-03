@@ -1,10 +1,13 @@
 import { useState } from "react";
 
 function App() {
+  // Set state for Input
   const [newItem, setNewItem] = useState("");
+  // Set state for Todos
   const [todos, setTodos] = useState([]);
 
-  function toggleTodo(id, completed) {
+  // Called when checkbox is toggled
+  function toggleTodo(id, completed) { // takes the parameters id, completed
     setTodos(currentTodos => {
       return currentTodos.map(todo => {
         if (todo.id === id) {
@@ -34,6 +37,7 @@ function App() {
  
   return (
     <>
+
       <form onSubmit={handleSubmit} className="new-item-form">
         <div>
           <label htmlFor="item">New Input</label>
@@ -48,12 +52,13 @@ function App() {
       </form>
       <h4>To Do List:</h4>
       <ul>
+        {todos.length === 0 && "There are no existing To Dos"}
         {todos.map((todo) => {
           return (
             <>
               <li key={todo.id}>
-                <label>
-                  <input type="checkbox" checked={todo.completed} onChange={e => toggleTodo(todo.id, e.target.checked)} />
+              <input className="check-box" type="checkbox" checked={todo.completed} onChange={e => toggleTodo(todo.id, e.target.checked)} /> 
+                <label className="label-checkbox">
                   {todo.title}
                 </label>
                 <button onClick={() => deleteTodo(todo.id)}>Delete</button>
