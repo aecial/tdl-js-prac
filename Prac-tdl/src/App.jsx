@@ -26,9 +26,9 @@ function App() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    setTodos((currentTodos) => {
+    setTodos((todos) => {
       return [
-        ...currentTodos,
+        ...todos,
         { id: crypto.randomUUID(), title: newItem, completed: false },
       ];
     });
