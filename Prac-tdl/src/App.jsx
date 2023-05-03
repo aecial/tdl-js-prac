@@ -8,8 +8,8 @@ function App() {
 
   // Called when checkbox is toggled
   function toggleTodo(id, completed) { // takes the parameters id, completed
-    setTodos(currentTodos => {
-      return currentTodos.map(todo => {
+    setTodos(todos => {
+      return todos.map(todo => {
         if (todo.id === id) {
           return {...todo, completed};
         }
@@ -19,8 +19,8 @@ function App() {
     })
   }
   function deleteTodo(id) {
-    setTodos(currentTodos => {
-      return currentTodos.filter(todo => todo.id !== id)
+    setTodos(todos => {
+      return todos.filter(todo => todo.id !== id)
     })
   }
 
